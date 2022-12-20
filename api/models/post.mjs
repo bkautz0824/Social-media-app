@@ -11,13 +11,10 @@ const Post = mongoose.model('Post', new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId
   },
   author: {
-    type: {
-      user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Users', required: true },
-      username: { type: String, required: true },
-      profile_image: { type: String }
-    }
+   type: mongoose.Schema.Types.ObjectId,
+   ref: 'Users'
   },
-  title: { type: String, minlength: 5, maxlength: 100 },
+  title: { type: String, minlength: 1, maxlength: 100 },
   text: { type: String, minlength: 2, maxlength: 400 },
   comments: {
     type: [commentSchema]

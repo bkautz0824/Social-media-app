@@ -46,7 +46,7 @@ const snakeCaseStamps = {
         category_subscriptions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }],
         following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
         followers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
-        created_posts: [{ post_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Posts' } }],
+        created_posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Posts' , _id:false }],
         liked_posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Posts' }],
         liked_comments: {
           type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comments' }]

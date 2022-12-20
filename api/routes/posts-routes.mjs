@@ -16,19 +16,15 @@ postRouter.post('/create', async (req, res, next) => {
   // req: user_id, username, category, images, text, title,
   let user
   let category = await Category.findOne({ name: req.body.category });
-   await User.findOne({ _id: req.body.author.user_id }).then(ele=>{ user = ele})
+   await User.findOne({ _id: req.body.author }).then(ele=>{ user = ele})
   console.log(user)
   if (!category || !user) return res.status(404).send('Category or User does not exist.')
   let post = new Post(_.assign(
     _.pick(req.body, ['title', 'text', 'category']), {
-    author: {
-      user_id: req.body.author.user_id,
-      username: req.body.author.username,
-      profile_image: req.body.author.profile_image
-    }, _id: new mongoose.Types.ObjectId(), images: [req.body.images]
+    author: req.body.author, _id: new mongoose.Types.ObjectId(), images: [req.body.images]
   }))
   category.posts.push({ post_id: post._id, author_id: post.user_id });
-  user.created_posts.push({ post_id: post._id });
+  user.created_posts.push(post._id);
   await category.save()
   await user.save()
   await post.save()
