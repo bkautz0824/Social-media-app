@@ -34,6 +34,7 @@ postRouter.post('/create', async (req, res, next) => {
 postRouter.get('/', async (req, res) => {
   try {
     const posts = await Post.find({}).limit(100)
+    console.log(posts)
     return res.send(posts)
   } catch (err) {
     res.status(404).send('An error has occurred while fetching posts.')

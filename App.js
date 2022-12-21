@@ -6,6 +6,8 @@ import { createNativeStackNavigator} from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Icon } from '@rneui/themed'
 import Login from './screens/Login.tsx'
+import * as React from 'react'
+import axios from 'axios';
 
 import Feed from './screens/Feed';
 import Account from './screens/Account';
@@ -14,6 +16,25 @@ const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
 
 export default function App() {
+
+  const getPosts = async() => {
+    await axios.get("http://localhost:5050/users/63a217af5d8b36f18f75dada").then(res => {
+       console.log("the shaman")
+       console.log(res.data)
+      setpostsArray(res.data)
+      console.log("Fetching posts data")
+    }, err => {
+      console.log("errrrorororo")
+      console.log(err)
+    })
+  }
+
+  React.useEffect(() => {
+    // getPopularPosts()
+    getPosts()
+  
+  }, []);
+
   return (
     <SafeAreaProvider>
       <NavigationContainer>
