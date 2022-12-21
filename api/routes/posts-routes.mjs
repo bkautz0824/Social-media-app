@@ -31,7 +31,7 @@ postRouter.post('/create', async (req, res, next) => {
   // console.log(post) 
   return res.send(post)
 })
-postRouter.get('/findAll', async (req, res) => {
+postRouter.get('/', async (req, res) => {
   try {
     const posts = await Post.find({}).limit(100)
     return res.send(posts)

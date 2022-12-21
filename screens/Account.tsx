@@ -1,7 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function Account({navigate}) {
+
+interface IAccountPropTypes {
+  navigate?:any
+}
+
+const Account:React.FunctionComponent<IAccountPropTypes> = () =>{
   return (
     <View>
       <Text>Account</Text>
@@ -10,3 +15,6 @@ export default function Account({navigate}) {
 }
 
 const styles = StyleSheet.create({})
+
+
+export default Account

@@ -6,7 +6,7 @@ import { createNativeStackNavigator} from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Icon } from '@rneui/themed'
 import Login from './screens/Login.tsx'
-import Homepage from './screens/Homepage';
+
 import Feed from './screens/Feed';
 import Account from './screens/Account';
 
@@ -18,7 +18,7 @@ export default function App() {
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name={'Login'} component={Login} />
+          {/* <Stack.Screen name={'Login'} component={Login} /> */}
           <Stack.Screen name={'Homepage'} >
             {
               ({navigation}) => 
