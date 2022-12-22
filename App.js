@@ -17,23 +17,7 @@ const Tab = createBottomTabNavigator()
 
 export default function App() {
 
-  const getPosts = async() => {
-    await axios.get("http://localhost:5050/users/63a217af5d8b36f18f75dada").then(res => {
-       console.log("the shaman")
-       console.log(res.data)
-      setpostsArray(res.data)
-      console.log("Fetching posts data")
-    }, err => {
-      console.log("errrrorororo")
-      console.log(err)
-    })
-  }
 
-  React.useEffect(() => {
-    // getPopularPosts()
-    getPosts()
-  
-  }, []);
 
   return (
     <SafeAreaProvider>

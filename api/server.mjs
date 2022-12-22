@@ -9,12 +9,12 @@ import { Server } from 'socket.io'
 import {fileURLToPath} from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const port = process.env.PORT || 3880;
+const port = 5050;
 console.log(port)
-const baseUrl = 'http://localhost:5050';
+const baseUrl = 'http://192.168.1.118:5050';
 // const api = axios.create({
 //   baseURL: baseUrl
-// }) 
+// })
 db.connect()
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("../build"));
