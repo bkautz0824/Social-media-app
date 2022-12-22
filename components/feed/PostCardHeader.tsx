@@ -7,22 +7,23 @@ interface ICardHeaderProps {
   navigation: any,
 }
 const PostCardHeader: React.FunctionComponent<ICardHeaderProps> = ({ postData, navigation }) => {
-  // console.log(postData.user)
+  console.log(postData.author.username, 'usooooooor')
 //   const styles = useStyles(colors)
   return (
     // <View style={styles.container}>
     <Pressable
     style={styles.container}
-       onPress={()=>navigation.navigate('Account', {user_id: postData.user.id})}
+       onPress={()=>navigation.navigate('Account', {user_id: postData.author.id})}
       >
         <Avatar
           icon={{name:'account-circle', type:'material-icons'}}
-          source={{uri: postData.user.profile_picture_url}}
+          source={{uri: postData.author.profile_picture_url}}
+        title='X'
         size={45}
           rounded
           containerStyle={styles.avatar}
      />
-      <Text style={styles.title}>{postData.user.username}</Text>
+      <Text style={styles.title}>{postData.author.username}</Text>
       </Pressable>
     // </View>
   );

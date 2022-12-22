@@ -33,9 +33,15 @@ postRouter.post('/create', async (req, res, next) => {
 })
 postRouter.get('/', async (req, res) => {
   try {
-    const posts = await Post.find({}).limit(100)
-    console.log(posts)
-    return res.send(posts)
+    return await Post.find({})
+    .populate('author')
+    .limit(100)
+    .exec((err, item) => {
+      console.log(item, 'item')
+      if(!err)  return res.send(item)
+      
+    })
+
   } catch (err) {
     res.status(404).send('An error has occurred while fetching posts.')
   }

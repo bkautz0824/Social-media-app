@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import commentSchema from './comment.mjs';
+import User from './user.mjs'
+
 const snakeCaseStamps = {
   timestamps: {
     createdAt: 'created_at',
@@ -12,7 +14,7 @@ const Post = mongoose.model('Post', new mongoose.Schema({
   },
   author: {
    type: mongoose.Schema.Types.ObjectId,
-   ref: 'Users'
+   ref: User
   },
   title: { type: String, minlength: 1, maxlength: 100 },
   text: { type: String, minlength: 2, maxlength: 400 },

@@ -10,20 +10,20 @@ const CardBody: React.FunctionComponent<ICardFooterProps> = ({ navigation, postI
 //   const styles = useStyles(colors)
   return (
     <View style={styles.container}>
-      {/* <View>
+      <View>
         <Text style={styles.likedByRow}>
           <Avatar
           avatarStyle={styles.avatar}
          
         rounded
         size={20}
-        source={{ uri: postInfo.user.profile_picture_url}}
+        // source={{ uri: postInfo.user.profile_picture_url}}
         />
           Liked By </Text>
-      </View> */}
+      </View>
       <Text style={styles.bodyText}>
-        <Text onPress={()=>navigation.push('Account', {user_id: postInfo.user.id})} style={styles.username}>{postInfo.user.username}: </Text>
-        <Text style={styles.description}>{postInfo.content}</Text>
+        {/* <Text onPress={()=>navigation.push('Account', {user_id: postInfo.user.id})} style={styles.username}>{postInfo.user.username}: </Text> */}
+        <Text style={styles.description}>{postInfo.text}</Text>
       </Text>
     </View>
   );
