@@ -27,11 +27,14 @@ export default function App() {
           <Stack.Screen name={'Homepage'} >
             {
               ({navigation}) => 
-              <Tab.Navigator>
+              <Tab.Navigator
+              screenOptions = {{headerTitle:'Home', headerShown: false}}
+              >
                 <Tab.Screen 
-                  name="News Feed"
+                  name="Feed"
                   component={Feed}
                   options={() => ({
+                    
                     tabBarIcon: () => <Icon name='home' type='material-icons' />
                   })}
 

@@ -14,7 +14,7 @@ const PostCard: React.FunctionComponent<IFeedCardProps> = ({ postData, navigatio
       <PostCardHeader navigation={navigation} postData={postData} />
       <Pressable onPress={() => {
         // navigation.setOptions({title: 'UPDATED!'})
-        navigation.push('Post Info', { postId: postData.id })
+        navigation.push('Post Info', { postId: postData._id })
       }}>
         <ImageContainer
         imageUrl={postData.images[0]}

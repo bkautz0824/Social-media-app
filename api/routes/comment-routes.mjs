@@ -9,7 +9,7 @@ const commentRouter = express.Router()
 // req: post_id, user_id, author, text
 // author { user_id, username, profile_image}
 // Save comment data to post and user as an embedded document
-commentRouter.post('/post', async (req, res, next) => {
+commentRouter.post('/create', async (req, res, next) => {
   let post, user, comment
   await Post.findOne({ _id: req.body.post_id }).then(ele=>post=ele)
   await User.findOne({ _id: req.body.user_id }).then(ele=>user=ele)

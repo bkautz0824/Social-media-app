@@ -28,16 +28,15 @@ const Feed:React.FunctionComponent<IFeedProps> = () => {
 
   return (
    <Stack.Navigator>
-    <Stack.Screen name={'Main'}>
+    <Stack.Screen name={'Main'} options={{headerShown:false}}>
       {() => 
-      <Tab.Navigator>
+      <Tab.Navigator >
         <Tab.Screen name={'Home'} component={PostList}/>
         <Tab.Screen name={'Popular'} component={PostList}/>
       </Tab.Navigator>}
     </Stack.Screen>
     <Stack.Screen name={'Post Info'} component={Post}/>
     <Stack.Screen name={'Account'} component={Account}/>
-
 
    </Stack.Navigator>
   )
