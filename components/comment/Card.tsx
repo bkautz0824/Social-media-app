@@ -8,16 +8,22 @@ interface ICardProps {
 }
 const Card: React.FunctionComponent<ICardProps> = ({colors, commentData, navigation}) => {
   // const styles = useStyles(colors)
+
+  React.useEffect(() => {
+    console.log(commentData, 'commentData')
+  
+  }, [])
+  
   return (
     <View style={styles.container}>
       <Text
       onPress={() => {
-        navigation.push('Account', { user_id: commentData.author._id })
+        navigation.push('Account', { user_id: commentData.user._id })
       }}
       >
-          <Text style={styles.username}>{commentData.user.username}: </Text>
+          <Text style={styles.username}>{commentData.author.username && commentData.author.username}: </Text>
         <Text style={styles.content}>
-        {commentData.content}
+        {commentData.text}
         </Text>
       </Text>
     </View>

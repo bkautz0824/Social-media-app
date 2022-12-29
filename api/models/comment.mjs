@@ -14,12 +14,8 @@ const commentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId
   },
   author: {
-    type: {
-      user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Users' },
-      username: { type: String },
-      profile_image: { type: String }
-    },
-    _id: false
+    type: mongoose.Schema.Types.ObjectId,
+    ref:'Users'
   },
   text: {
     type: String,

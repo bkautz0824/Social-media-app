@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import validator from "validator";
+import commentSchema from "./comment.mjs";
 
 const snakeCaseStamps = {
     timestamps: {
@@ -51,7 +52,7 @@ const snakeCaseStamps = {
         liked_comments: {
           type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comments' }]
         },
-        // created_comments: { type: [commentSchema], default: [] },
+        created_comments: { type: [commentSchema], default: [] },
         saved_posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Posts' }],
         // private_messages: { type: [chatSchema], default: [] },
         // posts: {
