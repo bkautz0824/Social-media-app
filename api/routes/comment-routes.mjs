@@ -13,7 +13,6 @@ commentRouter.post('/create', async (req, res, next) => {
   let post, user, comment
   await Post.findOne({ _id: req.body.post_id }).then(ele=>post=ele)
   await User.findOne({ _id: req.body.user_id }).then(ele=>user=ele)
-  console.log(req.body.user_id,user, 'user/post')
   if (!post || !user) return res.status(404).send('Post not found.')
   comment = _.assign(_.pick(req.body, [ 'text', 'post_id',]), {_id: new mongoose.Types.ObjectId(), author: req.body.user_id})
   console.log(comment)
@@ -98,3 +97,12 @@ commentRouter.put('/edit', async (req, res, next) => {
   res.send(post.comments[commentIndex])
 })
 export default commentRouter
+
+
+
+
+
+
+
+
+

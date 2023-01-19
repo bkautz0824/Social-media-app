@@ -4,7 +4,6 @@ import Category from '../models/category.mjs';
 import _ from 'lodash';
 import mongoose from 'mongoose';
 import User from '../models/user.mjs';
-
 const postRouter = express.Router();
 // api/posts
 // post to category
@@ -28,34 +27,33 @@ postRouter.post('/create', async (req, res, next) => {
   await category.save()
   await user.save()
   await post.save()
-  // console.log(post) 
+  // console.log(post)
   return res.send(post)
 })
 postRouter.get('/', async (req, res) => {
   try {
     return await Post.find({})
-    .populate('author')
-    .limit(100)
-    .exec((err, item) => {
-      console.log(item, 'item')
-      if(!err)  return res.send(item)
-      
+    .populate([{path: 'comments.author', model: User}, 'author']).exec((err,item) =>{
+       console.log(item, err)
+    if(!err) return res.send(item)
+    return res.status(404).send('Could not retrieve posts')
     })
-
   } catch (err) {
-    res.status(404).send('An error has occurred while fetching posts.')
+    return res.status(404).send('An error has occurred while fetching posts.')
   }
 })
 // Find one
 postRouter.get('/:_id', async (req, res, next) => {
   if (!mongoose.isValidObjectId(req.params._id)) return res.status(400).send('Invalid ID')
-  try { await Post.findOne({ _id: req.params._id }).populate([{path:'comments.author', model:User},'author']).exec((err, item) => {
-    
-    console.log(item, 'item')
-    if(!err)  return res.send(item)
-    
-  }) } catch (err) { return res.status(404).send('Cannot find post')}
-  // return res.send(post)
+  try {
+    await Post.findOne({ _id: req.params._id }).populate([{path: 'comments.author', model: User}, 'author']).exec((err,item)=>{
+      // return res.send(item)
+      console.log(item, err)
+   if(!err) return res.send(item)
+   })
+  }
+  catch (err)
+   { return res.status(404).send('Cannot find post')}
 })
 // Find all by user ID
 postRouter.get('/findAllByUser/:_id', async (req, res, next) => {

@@ -34,7 +34,8 @@ const snakeCaseStamps = {
           maxlength: 255
         },
         profile_image: {
-          type: String
+          type: String,
+          default: ''
         },
         bio: {
           type: String,

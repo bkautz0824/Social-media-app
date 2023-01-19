@@ -22,7 +22,7 @@ authRouter.post('/login', async (req, res) => {
   // console.log(req.body,validPassword)
   if (!validPassword) return res.status(400).send('Incorrect email or password.');
   // If verified, return a jwt, and user id & username
-  const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+  const token = jwt.sign({ _id: user._id }, 'secret');
   console.log('this is token' + token)
   // Set tokens to header and return basic user info,
   res.header({ 'x-auth-token': token, 'authorization': `Bearer ${token}` })
@@ -31,7 +31,8 @@ authRouter.post('/login', async (req, res) => {
 });
 authRouter.post('/verify', async (req, res, next) => {
   // console.log(req.body.token, 'this is the verify token')
-  return await jwt.verify(req.body.token, process.env.TOKEN_SECRET,
+  return await jwt.verify(req.body.token, 'secret',
+    // process.env.TOKEN_SECRET,
     async (err, user) => {
       if (err) return res.status(403).send('invalid token')
       let userData

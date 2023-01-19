@@ -28,7 +28,8 @@ const createUser = async (req,res) => {
     user.password = await bcrypt.hash(user.password, salt);
       await user.save();
       console.log('RUNNING SAVE')
-    secret = process.env.TOKEN_SECRET ? process.env.TOKEN_SECRET : global.TokenSecret
+    secret = 'secret'
+    // process.env.TOKEN_SECRET ? process.env.TOKEN_SECRET : global.TokenSecret
       const token = jwt.sign({ _id: user._id }, secret);
     return res.header('x-auth-token', token).send(_.assign(_.pick(user, ['_id', 'username', 'email', 'password', 'created_at', 'bio']), {token: token}));
     } catch (errors) {

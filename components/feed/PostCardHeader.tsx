@@ -7,7 +7,7 @@ interface ICardHeaderProps {
   navigation: any,
 }
 const PostCardHeader: React.FunctionComponent<ICardHeaderProps> = ({ postData, navigation }) => {
-  console.log(postData.author.username, 'usooooooor')
+  // console.log(postData.author.username, 'usooooooor')
 //   const styles = useStyles(colors)
   return (
     // <View style={styles.container}>

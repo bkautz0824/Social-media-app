@@ -8,7 +8,7 @@ interface IFeedCardProps {
   navigation: any,
 }
 const PostCard: React.FunctionComponent<IFeedCardProps> = ({ postData, navigation }) => {
-  console.log(postData, 'postcard')
+  // console.log(postData, 'postcard')
   return (
     <View style={styles.container}>
       <PostCardHeader navigation={navigation} postData={postData} />

@@ -41,7 +41,7 @@ export const userSlice = createSlice({
             state.data = undefined
         })
         builder.addCase(verifyUser.fulfilled, (state: any, action) => {
-            console.log(action.payload)
+            console.log(action.payload, 'payload')
             console.log('No longer pending user verify...')
             state.data = action.payload.data
             state.isLoading = false
